@@ -14,10 +14,30 @@ import assign from 'object-assign';
  * */
 
 export default class ListByPage extends Component {
+    static propTypes = {
+        filter: PropTypes.object,
+        list: PropTypes.array,
+        pageKey: PropTypes.string,
+        pageSize: PropTypes.number,
+        pagination: PropTypes.bool,
+        className: PropTypes.string,
+        columns: PropTypes.array.isRequired,
+        action: PropTypes.func.isRequired,
+    };
+
+    static defaultProps = {
+        filter: {},
+        list: [],
+        pageKey: 'pageNo',
+        pageSize: 20,
+        pagination: true,
+        className: '',
+    };
+
     constructor(props) {
         super(props);
         this.state = {
-            loading: props.loading,
+            loading: false,
             page: {
                 current: 1,
             },
@@ -26,22 +46,6 @@ export default class ListByPage extends Component {
             list: props.list,
         };
     }
-
-    static defaultProps = {
-        filter: {},
-        list: [],
-        pageKey: 'pageNo',
-        pageSize: 20,
-        pagination: true,
-        columns: [],
-        className: '',
-        loading: false,
-    };
-
-
-    static propTypes = {
-        action: PropTypes.func.isRequired,
-    };
 
     componentDidMount() {
         this.fetchData();
@@ -63,19 +67,20 @@ export default class ListByPage extends Component {
         }
     }
 
-    getPageData(page) {
+    getPageData=(page) => {
         this.setState({ page }, () => {
             this.fetchData();
         });
-    }
+    };
 
     fetchData = () => {
         this.setState({ loading: true });
-        return this.props.action(assign({}, this.state.filter, mapKeys(this.state.page, () => this.props.pageKey))).then(() => {
-            this.setState({ loading: false });
-        }).catch((err) => {
-            this.setState({ loading: false });
-        });
+        return this.props.action(assign({}, this.state.filter, mapKeys(this.state.page, () => this.props.pageKey)))
+            .then(() => {
+                this.setState({ loading: false });
+            }).catch(() => {
+                this.setState({ loading: false });
+            });
     };
 
 
@@ -103,7 +108,7 @@ export default class ListByPage extends Component {
                 datasets={list}
                 loading={loading}
                 pageInfo={pagination ? pageInfo : null}
-                onChange={this.getPageData.bind(this)}
+                onChange={this.getPageData}
             />
         );
     }
