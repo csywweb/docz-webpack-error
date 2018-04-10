@@ -28,7 +28,7 @@ setDefaults({
 addDecorator(story => <StoryContainer story={story} />);
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../src/components', true, /.stories.js$/);
+const req = require.context('../src/components', true, /.__story__.js$/);
 function loadStories() {
     req.keys().forEach(filename => req(filename));
 }

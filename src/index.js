@@ -1,13 +1,7 @@
 // 入口文件
-// 通用 - 展示类
 
-// 通用 - 操作类
+// 表格
 
+export BeautyTable from './components/BeautyTable';
+export ListByPage from './components/ListByPage';
 
-// 店铺
-
-
-// 营销
-
-
-// 客户

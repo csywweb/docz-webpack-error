@@ -62,3 +62,5 @@ local
 dist_server
 dist_client
 .uglify
+lib/
+yarn-error.log
