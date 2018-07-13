@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
     Table,
 } from 'zent';
@@ -11,17 +9,11 @@ import assign from 'object-assign';
  * filter   筛选参数
  * total
  * list     列表数据
+ * columns
  * */
 
-export default class ListByPage extends Component {
+export default class ListByPage extends React.Component {
     static propTypes = {
-        filter: PropTypes.object,
-        list: PropTypes.array,
-        pageKey: PropTypes.string,
-        pageSize: PropTypes.number,
-        pagination: PropTypes.bool,
-        className: PropTypes.string,
-        columns: PropTypes.array.isRequired,
         action: PropTypes.func.isRequired,
     };
 
@@ -31,21 +23,20 @@ export default class ListByPage extends Component {
         pageKey: 'pageNo',
         pageSize: 20,
         pagination: true,
+        columns: [],
         className: '',
+        loading: false,
     };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            loading: false,
-            page: {
-                current: 1,
-            },
-            filter: props.filter,
-            total: 0,
-            list: props.list,
-        };
-    }
+    state = {
+        loading: this.props.loading,
+        page: {
+            current: 1,
+        },
+        filter: this.props.filter,
+        total: 0,
+        list: this.props.list,
+    };
 
     componentDidMount() {
         this.fetchData();
@@ -53,9 +44,12 @@ export default class ListByPage extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (!isEqual(this.state.filter, nextProps.filter)) {
+            const prevControl = nextProps.filter.prevControl !== this.state.filter.prevControl;
+            const { current } = this.state.page;
+            const newCurrent = prevControl && current > 1 ? current - 1 : 1;
             this.setState({
                 filter: nextProps.filter,
-                page: { current: 1 },
+                page: { current: newCurrent },
             }, () => {
                 this.fetchData();
             });
@@ -71,16 +65,18 @@ export default class ListByPage extends Component {
         this.setState({ page }, () => {
             this.fetchData();
         });
-    };
+    }
 
     fetchData = () => {
         this.setState({ loading: true });
-        return this.props.action(assign({}, this.state.filter, mapKeys(this.state.page, () => this.props.pageKey)))
-            .then(() => {
-                this.setState({ loading: false });
-            }).catch(() => {
-                this.setState({ loading: false });
-            });
+        const filter = { ...this.state.filter };
+        delete filter.prevControl;
+
+        return this.props.action(assign({}, filter, mapKeys(this.state.page, () => this.props.pageKey))).then(() => {
+            this.setState({ loading: false });
+        }).catch(() => {
+            this.setState({ loading: false });
+        });
     };
 
 

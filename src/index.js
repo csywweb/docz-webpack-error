@@ -2,6 +2,10 @@
 
 // 表格
 
-export BeautyTable from './components/BeautyTable';
-export ListByPage from './components/ListByPage';
+// import BeautyTable from './components/BeautyTable';
+// import ListByPage from './components/ListByPage';
 
+// import * as cpn from './components';
+
+// export const BeautyTable=cpn.BeautyTable;
+// export const ListByPage=cpn.ListByPage;

@@ -59,5 +59,9 @@ module.exports = {
         new webpack.DefinePlugin({
             _global: JSON.stringify(__global),
         }),
+        new webpack.ProvidePlugin({
+            React: 'react',
+            PropTypes: 'prop-types',
+        }),
     ],
 };

@@ -17,3 +17,11 @@
 3. 它的属性列表(propTypes)全覆盖：属性名、具体描述、数据类型、是否有默认值、是否必须等
 
 4. 示例丰富
+
+
+### TODO
+
+- 支持styled-components [你需要知道的CSS-in-JS](http://www.infoq.com/cn/news/2017/11/css-in-js-need-know?utm_source=infoq&utm_campaign=footer_links&tm_medium=footer_links_article_page)
+- 组件单元测试支持
+- 生成单侧覆盖率报告
+- 部署文档网站
