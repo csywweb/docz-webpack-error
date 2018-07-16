@@ -3,10 +3,21 @@
   "description": "美业前端业务组件库",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build:site": "node ./node_modules/.bin/build-storybook -o ./dist",
+    "clean": "rm -rf lib/ dist/",
+    "build": "npm run clean && npm run build:babel",
+    "build:babel": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js",
+    "build:babel:watch": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js --watch",
+    "prepublish": "npm run build",
+    "lintjs": "eslint src/"
+  },
   "dependencies": {
     "@youzan/react-amap": "^4.1.6",
     "@youzan/region-select": "^4.3.8",
-    "eslint": "^4.17.0",
     "lodash": "^4.17.5",
     "object-assign": "^4.1.1",
     "prop-types": "^15.6.1",
@@ -37,16 +48,6 @@
     "eslint-plugin-react": "^7.6.1",
     "storybook-readme": "^3.3.0",
     "style-loader": "^0.20.3"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "clean": "rm -rf lib/",
-    "build": "npm run clean && npm run build:babel",
-    "build:babel": "babel src/ -d lib --ignore __story__.js,__test__.js,__demo__.js",
-    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

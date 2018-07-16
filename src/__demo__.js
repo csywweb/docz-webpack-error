@@ -6,6 +6,11 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+if (process.env.NODE_ENV !== 'production') {   
+  const {whyDidYouUpdate} = require('why-did-you-update'); 
+  whyDidYouUpdate(React);
+}
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
