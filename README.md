@@ -1,4 +1,10 @@
-## 美业 React 业务组件库
+## 美业 React 业务组件库   @youzan/mei-components
+
+[![mei-components](http://npm.qima-inc.com/badge/v/@youzan/mei-components.svg?style=flat-square)](http://npm.qima-inc.com/package/@youzan/mei-components)
+
+
+
+## 浏览 [组件预览地址](http://10.9.82.201:6006/)
 
 在开发React组件时我们通常需要处理3个问题：
 

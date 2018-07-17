@@ -1,6 +1,9 @@
 // 入口文件
 
-// 表格
 
+// 表单
+export AddressField from './components/AddressField';
+
+// 表格
 export BeautyTable from './components/BeautyTable';
 export ListByPage from './components/ListByPage';
