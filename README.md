@@ -37,7 +37,7 @@ yyarn add @youzan/mei-components
 ## 使用
 
 ```js
-import { ListByPage } from '@youzan/mei-compoents';
+import { ListByPage } from '@youzan/mei-components';
 
 //
 
@@ -81,6 +81,19 @@ npm run build
 
 ```
 # 通过钩子会自动执行 clean && build
+
+ynpm login
+// 如果没有权限 需要 @zhouzhen 加一下 ynpm adduser
+ynpm publish
+```
+
+### 更新网站
+
+```sh
+// 进入到 qa机器 10.9.82.201
+// 项目目录为  /data/project/beauty-component-react
+git pull 
+npm run build:site
 ```
 
 ### 更新日志
