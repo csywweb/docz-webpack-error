@@ -102,8 +102,7 @@ npm run build:site
 
 ## TODO
 
-- 支持styled-components [你需要知道的CSS-in-JS](http://www.infoq.com/cn/news/2017/11/css-in-js-need-know?utm_source=infoq&utm_campaign=footer_links&tm_medium=footer_links_article_page)
+- 支持scss [鼓励使用styled-components] [你需要知道的CSS-in-JS](http://www.infoq.com/cn/news/2017/11/css-in-js-need-know?utm_source=infoq&utm_campaign=footer_links&tm_medium=footer_links_article_page)
 - 组件单元测试支持
 - TypeScript支持
 - 生成单侧覆盖率报告
-- 部署文档网站

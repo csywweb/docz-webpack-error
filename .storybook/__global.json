@@ -1,3 +1,5 @@
 {
-
+    "env":{
+        "dept_info":[{"deptId":22,"deptName":"2222"},{"deptId":11,"deptName":"1111"}]
+    }
 }

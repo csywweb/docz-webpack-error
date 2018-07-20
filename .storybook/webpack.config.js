@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const __global = require('./__global');
+// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
 module.exports = {
@@ -53,9 +54,26 @@ module.exports = {
                     loader: 'css-loader',
                 }],
             },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: 'style-loader',
+                },
+                {
+                    loader: 'css-loader',
+                },
+                {
+                    loader:'sass-loader',
+                }],
+            },
+            // {
+            //     test: /\.scss$/i,
+            //     use: extractLESS.extract(['style-loader', 'css-loader', 'sass-loader' ])
+            // },
         ],
     },
     plugins: [
+        new ExtractTextPlugin("index.css"),
         new webpack.DefinePlugin({
             _global: JSON.stringify(__global),
         }),
