@@ -3,6 +3,7 @@
   "description": "美业前端业务组件库",
   "version": "1.0.5",
   "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "storybook": "start-storybook -p 6006",
