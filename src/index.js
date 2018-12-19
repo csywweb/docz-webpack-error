@@ -1,11 +1,15 @@
-// 入口文件
-
-
 // 表单
-export AddressField from './components/AddressField';
-
+import AddressField from './components/AddressField';
 // 表格
-export BeautyTable from './components/BeautyTable';
-export ListByPage from './components/ListByPage';
+import BeautyTable from './components/BeautyTable';
+import ListByPage from './components/ListByPage';
+import SelectDept from './components/select_dept';
+import SimpleForm from './components/simple_form';
 
-export SelectDept from './components/select_dept';
+export {
+    AddressField,
+    BeautyTable,
+    ListByPage,
+    SelectDept,
+    SimpleForm,
+};

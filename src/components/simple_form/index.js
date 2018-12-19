@@ -31,7 +31,7 @@ const {
     Field, createForm, InputField, SelectField, RadioGroupField,
 } = Form;
 
-export const FieldTypes = {
+const FieldTypes = {
     INPUT: 1,
     SELECT: 2,
     RADIO: 3,
@@ -161,9 +161,11 @@ SimpleForm.defaultProps = {
     onCancel: undefined,
 };
 
-export default createForm()(SimpleForm);
+const HOCForm = createForm()(SimpleForm);
 
-export const isFormValid = (zentForm) => {
+HOCForm.FieldTypes = FieldTypes;
+
+const isFormValid = (zentForm) => {
     zentForm.validateForm();
     const errors = zentForm.getValidationErrors();
     zentForm.setFieldValidationErrors(errors);
@@ -174,4 +176,9 @@ export const isFormValid = (zentForm) => {
     };
 };
 
-export const getFormValues = zentForm => zentForm.getFormValues();
+const getFormValues = zentForm => zentForm.getFormValues();
+
+HOCForm.isFormValid = isFormValid;
+HOCForm.getFormValues = getFormValues;
+
+export default HOCForm;
