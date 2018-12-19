@@ -21,8 +21,8 @@ const moneyValidation = { //eslint-disable-line
     error: '输入的金额不合法',
 };
 
-// import Readme from './README.md';
-const Readme = require('./README.md');
+const ReadmeD = require('./README_d.md');
+const ReadmeS = require('./README_s.md');
 
 const fieldsConfig1 = [
     {
@@ -128,28 +128,25 @@ const fieldsConfig2 = [
 
 storiesOf('SimpleForm', module)
     .addDecorator(withKnobs)
-    .addDecorator(withDocs(Readme))
-    .add('Dialog 形式',
-        () => {
-            const formProps = {
-                fieldsConfig: fieldsConfig1,
-                showSubmit: boolean('Show submit button', false),
-                showCancel: boolean('Show cancel button', false),
-            };
+    .add('Dialog 形式', withDocs(ReadmeD, () => {
+        const formProps = {
+            fieldsConfig: fieldsConfig1,
+            showSubmit: boolean('Show submit button', false),
+            showCancel: boolean('Show cancel button', false),
+        };
 
-            return (
-                <SimpleForm {...formProps} />
-            );
-        })
-    .add('传统形式',
-        () => {
-            const formProps = {
-                fieldsConfig: fieldsConfig2,
-                showSubmit: boolean('Show submit button', true),
-                showCancel: boolean('Show cancel button', true),
-            };
+        return (
+            <SimpleForm {...formProps} />
+        );
+    }))
+    .add('传统形式', withDocs(ReadmeS, () => {
+        const formProps = {
+            fieldsConfig: fieldsConfig2,
+            showSubmit: boolean('Show submit button', true),
+            showCancel: boolean('Show cancel button', true),
+        };
 
-            return (
-                <SimpleForm {...formProps} />
-            );
-        });
+        return (
+            <SimpleForm {...formProps} />
+        );
+    }));
