@@ -9,14 +9,6 @@ import scss from './index.scss';
 
 // 弹层
 export default class PopSelector extends React.Component {
-    static propTypes = {
-        ordered: PropTypes.bool,
-    }
-
-    static defaultProps = {
-        ordered: true,
-    }
-
     constructor(props) {
         super(props);
         const { selectedOptions } = this.props;
@@ -184,3 +176,12 @@ export default class PopSelector extends React.Component {
         );
     }
 }
+
+
+PopSelector.propTypes = {
+    ordered: PropTypes.bool,
+};
+
+PopSelector.defaultProps = {
+    ordered: true,
+};

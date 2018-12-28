@@ -42,24 +42,6 @@ import { pick } from 'lodash';
 import PropTypes from 'prop-types';
 
 export default class BeautyTable extends React.Component {
-    static defaultProps = {
-        params: {},
-        pageInfo: {},
-        formatData: null,
-        onChange: () => {},
-        onFetchDataError: () => {},
-    }
-
-    static propTypes = {
-        columns: PropTypes.array.isRequired,
-        params: PropTypes.object,
-        pageInfo: PropTypes.object,
-        fetchData: PropTypes.func.isRequired,
-        onFetchDataError: PropTypes.func,
-        formatData: PropTypes.func,
-        onChange: PropTypes.func,
-    }
-
     constructor(props) {
         super(props);
         this.state = {
@@ -157,3 +139,21 @@ export default class BeautyTable extends React.Component {
         );
     }
 }
+
+BeautyTable.defaultProps = {
+    params: {},
+    pageInfo: {},
+    formatData: null,
+    onChange: () => {},
+    onFetchDataError: () => {},
+};
+
+BeautyTable.propTypes = {
+    columns: PropTypes.array.isRequired,
+    params: PropTypes.object,
+    pageInfo: PropTypes.object,
+    fetchData: PropTypes.func.isRequired,
+    onFetchDataError: PropTypes.func,
+    formatData: PropTypes.func,
+    onChange: PropTypes.func,
+};
