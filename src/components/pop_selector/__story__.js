@@ -10,7 +10,7 @@ import {
 } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
-import BeautyTable from './index';
+import PopSelector from './index';
 
 // import Readme from './README.md';
 const Readme = require('./README.md');
@@ -61,20 +61,10 @@ const formatData = data => ({
 });
 
 
-storiesOf('Table', module)
+storiesOf('Select', module)
     .addDecorator(withKnobs)
     .addDecorator(withDocs(Readme))
     .addDecorator(withReadme(Readme))
-    .add('beauty_table', () => (
-        <BeautyTable
-            columns={array('columns', columns)}
-            pageInfo={object('pageInfo', {
-                pageSize: number('pageSize', 10),
-            })}
-            params={object('params', {
-
-            })}
-            fetchData={fetchDataPromise}
-            formatData={formatData}
-        />
+    .add('pop_selector', () => (
+        <PopSelector />
     ));

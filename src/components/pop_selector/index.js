@@ -107,7 +107,7 @@ export default class PopSelector extends React.Component {
 
     renderOptions() {
         const { loading, data } = this.state;
-        const { OptionComponent, option: OptionComponent, emptyText = '无可用数据' } = this.props;
+        const { option: OptionComponent, emptyText = '无可用数据' } = this.props;
 
         if (loading) {
             return <Loading show />;
