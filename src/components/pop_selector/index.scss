@@ -1,0 +1,99 @@
+@import "common/var";
+.pop-selector-placeholder {
+    color: $c-beauty;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+:local(.selector) {
+    z-index: 1000000;
+    .pop-container {
+        padding: 0 15px;
+        width: 340px;
+        height: 394px;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.14);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+    }
+    .pop-header {
+        height: 50px;
+        font-size: 16px;
+        color: #111;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e5e5e5;
+        margin: 0 5px;
+    }
+    .pop-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+    .pop-footer {
+        height: 30px;
+        margin: 10px 0;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .pop-close {
+        font-size: 18px;
+        color: #999;
+        width: 26px;
+        height: 26px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .pop-empty-text {
+        color: #999;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .pop-option {
+        position: relative;
+        height: 48px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        background-color: #f5f5f5;
+        color: #555;
+        padding-right: 10px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .no-select-text {
+        padding-left: 46px;
+    }
+    .pop-option-left {
+        flex: 1;
+        position: relative;
+        padding-left: 46px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .pop-option-right {
+        width: 60px;
+    }
+    .pop-option-selected {
+        background-color: #FFF1F5;
+    }
+    .pop-icon-selected {
+        width: 16px;
+        height: 16px;
+        fill: #e74c75;
+        left: 15px;
+        top: 16px;
+        position: absolute;
+    }
+}

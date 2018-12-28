@@ -36,8 +36,10 @@
  *
  * 实际使用场景参考实例：src/marketing/coupon_publisher/member_list.js文件
  */
+import React from 'react';
 import { Table } from 'zent';
 import { pick } from 'lodash';
+import PropTypes from 'prop-types';
 
 export default class BeautyTable extends React.Component {
     static defaultProps = {
@@ -76,8 +78,9 @@ export default class BeautyTable extends React.Component {
     }
 
     onTableChange = ({ current }) => {
+        const { pageInfo } = this.state;
         this.setState({
-            pageInfo: { ...this.state.pageInfo, pageNo: current },
+            pageInfo: { ...pageInfo, pageNo: current },
         }, this.refreshTable);
     }
 
@@ -86,14 +89,16 @@ export default class BeautyTable extends React.Component {
      */
     refreshTable = () => {
         const { pageInfo } = this.state;
-        const { params, formatData, onChange } = this.props;
+        const {
+            params, formatData, onChange, fetchData, onFetchDataError,
+        } = this.props;
         // 合并查询参数
         const query = { ...pageInfo, ...params };
 
         this.setState({ loading: true });
         // 这里把page参数也传入，兼容新版后端api，因为新版后端api的参数是page，不再是pageNo了，
         // 这里把page和pageNo都传给后台，他想用哪个就用哪个
-        this.props.fetchData({ ...query, page: query.pageNo }).then((data) => {
+        fetchData({ ...query, page: query.pageNo }).then((data) => {
             // 这里使用items，也是为了兼容新版后端api，新版api的列表数据返回的是items，不是list了
             // 另外，totalCount数据保存在了paginator字段里面了，这里这样写，是为了兼容2种方案
             // 传pageInfo可以在formatData中进行手动分页
@@ -112,7 +117,7 @@ export default class BeautyTable extends React.Component {
             onChange(total);
         }).catch((err) => {
             this.setState({ loading: false });
-            this.props.onFetchDataError(err);
+            onFetchDataError(err);
         });
     }
 
@@ -120,7 +125,8 @@ export default class BeautyTable extends React.Component {
      * 重载表格: 会将pageNo重置为1，然后刷新
      */
     resetTable = () => {
-        this.setState({ pageInfo: { ...this.state.pageInfo, pageNo: 1 } }, this.refreshTable);
+        const { pageInfo } = this.state;
+        this.setState({ pageInfo: { ...pageInfo, pageNo: 1 } }, this.refreshTable);
     }
 
     render() {
@@ -139,13 +145,15 @@ export default class BeautyTable extends React.Component {
             total: pageInfo.total,
         };
 
-        return (<Table
-            columns={columns}
-            datasets={list}
-            onChange={this.onTableChange}
-            pageInfo={formattedPageInfo}
-            loading={loading}
-            {...originProps}
-        />);
+        return (
+            <Table
+                columns={columns}
+                datasets={list}
+                onChange={this.onTableChange}
+                pageInfo={formattedPageInfo}
+                loading={loading}
+                {...originProps}
+            />
+        );
     }
 }

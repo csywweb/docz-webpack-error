@@ -23,6 +23,7 @@
   "dependencies": {
     "@youzan/react-amap": "^4.1.6",
     "@youzan/region-select": "^4.3.8",
+    "classnames": "^2.2.6",
     "lodash": "^4.17.5",
     "object-assign": "^4.1.1",
     "prop-types": "^15.6.1",
