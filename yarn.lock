@@ -320,14 +320,14 @@
   version "16.0.36"
   resolved "http://registry.npm.qima-inc.com/@types/react/download/@types/react-16.0.36.tgz#ceb5639013bdb92a94147883052e69bb2c22c69b"
 
-"@youzan/react-amap@^4.1.6":
-  version "4.1.6"
-  resolved "http://registry.npm.qima-inc.com/@youzan/react-amap/download/@youzan/react-amap-4.1.6.tgz#9fbcb9ed4f67e31c7f3509fde307d412e58b3b62"
+"@youzan/react-amap@^5.0.0":
+  version "5.0.0"
+  resolved "http://registry.npm.qima-inc.com/@youzan/react-amap/download/@youzan/react-amap-5.0.0.tgz#41abdc4a34b629cb804489d31445462ad769da80"
   dependencies:
     classnames "^2.2.5"
     lodash "^4.17.4"
 
-"@youzan/region-select@^4.3.8":
+"@youzan/region-select@4.3.8":
   version "4.3.8"
   resolved "http://registry.npm.qima-inc.com/@youzan/region-select/download/@youzan/region-select-4.3.8.tgz#d58ce8a654400027f17e0bb8be25457a470449f0"
   dependencies:
@@ -7511,9 +7511,9 @@ zan-utils@^1.1.8:
     url-parse "^1.1.9"
     zan-jquery "^1.0.2"
 
-zent@^5.0.1:
-  version "5.0.1"
-  resolved "http://registry.npm.qima-inc.com/zent/download/zent-5.0.1.tgz#4b4716967edbd7dcc5096d3850e2bbb2392e569f"
+zent@4.3.0:
+  version "4.3.0"
+  resolved "http://registry.npm.qima-inc.com/zent/download/zent-4.3.0.tgz#35ac8b8bb7c26379b07333e88c47400170e0f177"
   dependencies:
     autosize "^4.0.0"
     babel-runtime "^6.23.0"

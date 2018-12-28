@@ -21,8 +21,8 @@
     "lintjs": "eslint src/"
   },
   "dependencies": {
-    "@youzan/react-amap": "^4.1.6",
-    "@youzan/region-select": "^4.3.8",
+    "@youzan/react-amap": "^5.0.0",
+    "@youzan/region-select": "4.3.8",
     "classnames": "^2.2.6",
     "lodash": "^4.17.5",
     "object-assign": "^4.1.1",
@@ -31,7 +31,7 @@
     "react-dom": "^16.2.0",
     "styled-components": "^3.3.3",
     "webpack": "3.5.5",
-    "zent": "^5.0.1"
+    "zent": "4.3.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.13",
