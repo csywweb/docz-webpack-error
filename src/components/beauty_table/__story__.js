@@ -4,14 +4,16 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-// import Readme from './README.md';
-const Readme = require('./README.md');
-
 import { withReadme, withDocs } from 'storybook-readme';
-import { withKnobs, text, number, array, boolean, object } from '@storybook/addon-knobs';
+import {
+    withKnobs, text, number, array, boolean, object,
+} from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 
 import BeautyTable from './index';
+
+// import Readme from './README.md';
+const Readme = require('./README.md');
 
 const datasets = [{
     item_id: '5024217',
@@ -63,14 +65,16 @@ storiesOf('Table', module)
     .addDecorator(withKnobs)
     .addDecorator(withDocs(Readme))
     .addDecorator(withReadme(Readme))
-    .add('BeautyTable', () => (<BeautyTable
-        columns={array('columns', columns)}
-        pageInfo={object('pageInfo', {
-            pageSize: number('pageSize', 10),
-        })}
-        params={object('params', {
+    .add('beauty_table', () => (
+        <BeautyTable
+            columns={array('columns', columns)}
+            pageInfo={object('pageInfo', {
+                pageSize: number('pageSize', 10),
+            })}
+            params={object('params', {
 
-        })}
-        fetchData={fetchDataPromise}
-        formatData={formatData}
-    />));
+            })}
+            fetchData={fetchDataPromise}
+            formatData={formatData}
+        />
+    ));

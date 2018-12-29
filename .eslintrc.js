@@ -54,6 +54,9 @@ module.exports = {
         "react/forbid-prop-types": 0,
         "jsx-a11y/no-static-element-interactions": [0],
         "eqeqeq": 0,
+        "react/no-array-index-key": 0,
+        "no-redeclare": 0,
+        "no-shadow": 0
     },
     "settings": {
         "import/resolver": {
