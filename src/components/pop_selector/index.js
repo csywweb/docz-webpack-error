@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Popover, Button, Loading, Notify,
+    Popover, Button, BlockLoading, Notify,
 } from 'zent';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -102,7 +102,7 @@ export default class PopSelector extends React.Component {
         const { option: OptionComponent, emptyText = '无可用数据' } = this.props;
 
         if (loading) {
-            return <Loading show />;
+            return <BlockLoading show />;
         }
 
         if (data.length > 0) {

@@ -1,7 +1,6 @@
 import {
     Table,
 } from 'zent';
-import mapKeys from 'lodash/mapKeys';
 import isEqual from 'lodash/isEqual';
 import assign from 'object-assign';
 
