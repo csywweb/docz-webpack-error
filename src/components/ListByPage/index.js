@@ -72,8 +72,9 @@ export default class ListByPage extends React.Component {
         const filter = { ...this.state.filter };
         delete filter.prevControl;
         delete filter._refresh; // 通过修改此参数值来刷新请求，但不把此参数作为请求参数
-
-        return this.props.action(assign({}, filter, mapKeys(this.state.page, () => this.props.pageKey))).then(() => {
+        const pageInfo = {};
+        pageInfo[this.props.pageKey] = this.state.page.current;
+        return this.props.action(assign({}, filter, pageInfo)).then(() => {
             this.setState({ loading: false });
         }).catch(() => {
             this.setState({ loading: false });
