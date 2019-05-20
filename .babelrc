@@ -13,6 +13,12 @@
     "stage-0"
   ],
   "plugins": [
-    "add-module-exports",
+    ["zent", {
+      "noModuleRewrite": false,
+      "useESM": false,
+      "automaticStyleImport": true,
+      "useRawStyle": true
+  }],
+    "add-module-exports"
   ]
 }
