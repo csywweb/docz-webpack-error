@@ -15,7 +15,7 @@
   "plugins": [
     ["zent", {
       "noModuleRewrite": false,
-      "useESM": false,
+      "useESM": true,
       "automaticStyleImport": true,
       "useRawStyle": true
   }],
