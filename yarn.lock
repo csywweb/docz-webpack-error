@@ -1165,6 +1165,11 @@
   version "1.4.2"
   resolved "http://registry.npm.qima-inc.com/@types/tinycolor2/download/@types/tinycolor2-1.4.2.tgz#721ca5c5d1a2988b4a886e35c2ffc5735b6afbdf"
 
+"@types/warning@^3.0.0":
+  version "3.0.0"
+  resolved "http://registry.npm.qima-inc.com/@types/warning/download/@types/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
+  integrity sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=
+
 "@types/yargs@^12.0.2", "@types/yargs@^12.0.9":
   version "12.0.12"
   resolved "http://registry.npm.qima-inc.com/@types/yargs/download/@types/yargs-12.0.12.tgz#45dd1d0638e8c8f153e87d296907659296873916"
@@ -10087,6 +10092,13 @@ warning@^3.0.0:
   dependencies:
     loose-envify "^1.0.0"
 
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "http://registry.npm.qima-inc.com/warning/download/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha1-Fungd+uKhtavfWSqHgX9hbRnjKM=
+  dependencies:
+    loose-envify "^1.0.0"
+
 watchpack@^1.4.0:
   version "1.4.0"
   resolved "http://registry.npm.qima-inc.com/watchpack/download/watchpack-1.4.0.tgz#4a1472bcbb952bd0a9bb4036801f954dfb39faac"
@@ -10432,9 +10444,10 @@ zan-pc-ajax@^4.0.5:
     lodash "^4.17.4"
     zan-ajax "^2.0.0"
 
-zent@7.0.0-next.11:
-  version "7.0.0-next.11"
-  resolved "http://registry.npm.qima-inc.com/zent/download/zent-7.0.0-next.11.tgz#3993f4cf709f835d2128441363744bf17c841c1e"
+zent@7.0.0-next.14:
+  version "7.0.0-next.14"
+  resolved "http://registry.npm.qima-inc.com/zent/download/zent-7.0.0-next.14.tgz#1a6d741f0d16761add86707a8685bd44a26459f1"
+  integrity sha1-Gm10Hw0WdhrdhnB6hoW9RKJkWfE=
   dependencies:
     "@babel/runtime" "^7.1.5"
     "@types/autosize" "^3.0.6"
@@ -10450,6 +10463,7 @@ zent@7.0.0-next.11:
     "@types/react-transition-group" "^2.0.16"
     "@types/sortablejs" "^1.7.2"
     "@types/tinycolor2" "^1.4.1"
+    "@types/warning" "^3.0.0"
     autosize "^4.0.0"
     big.js "^5.2.2"
     classnames "^2.2.6"
@@ -10467,6 +10481,7 @@ zent@7.0.0-next.11:
     tinycolor2 "^1.4.1"
     tslib "^1.9.3"
     utility-types "^3.4.1"
+    warning "^4.0.3"
     zenticons "1.4.1"
 
 zenticons@1.4.1:
