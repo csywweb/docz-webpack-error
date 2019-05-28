@@ -95,7 +95,7 @@ export default class ListByPage extends React.Component {
         } = this.state;
 
         const pageInfo = assign({
-            limit: pageSize,
+            pageSize,
             total,
         }, page);
 
