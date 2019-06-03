@@ -9,7 +9,7 @@
  * pageInfo: object，可选，默认值：{pageNo: 1, pageSize: 20}，提供初始化页码，以及每页多少条数据，
  * params:  object, 可选，默认值：{}，提供过滤查询参数，
  * formatData: function, 可选，格式化数据函数, 该函数的入参是接口返回的原始数据，用于将非标准化翻页数据重新组装成标准翻页格式的数据，标准如下：
- *             {list: [], total: 100, current: 1, limit: 20}
+ *             {list: [], total: 100, current: 1, pageSize: 20}
  * fetchData: function, 必填，使用现有的api，则必须绑定api上下文，才能传入，例如：const getOrderList = orderApi.getOrderList.bind(orderApi)
  * columns: 必填，跟zent Table组件无任何差异，另外zent的Table的所有属性均支持，比如rowKey等等
  *
@@ -123,7 +123,7 @@ export default class BeautyTable extends React.Component {
         // 格式化成Table自己的配置格式
         const formattedPageInfo = {
             current: pageInfo.pageNo,
-            limit: pageInfo.pageSize,
+            pageSize: pageInfo.pageSize,
             total: pageInfo.total,
         };
 

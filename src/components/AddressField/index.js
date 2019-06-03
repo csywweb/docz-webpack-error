@@ -6,8 +6,10 @@ import ReactMap from '@youzan/react-amap';
 import '@youzan/region-select/lib/index.css';
 import '@youzan/react-amap/lib/index.css';
 import isEqual from 'lodash/isEqual';
-import { Form as ZentForm, Button, Input, Pop, Icon } from 'zent';
-import {AddressDiv} from './style';
+import {
+    Form as ZentForm, Button, Input, Pop, Icon,
+} from 'zent';
+import { AddressDiv } from './style';
 
 const { Field, InputField, getControlGroup } = ZentForm;
 
@@ -100,14 +102,14 @@ const AMapField = getControlGroup((props) => {
 });
 
 
-const TitPop=()=>(
+const TitPop = () => (
     <div className="map-tit-pop">
         <p style={{ color: '#555555' }}>1、找不到您的店铺地址？</p>
         <p>美业采用的是高德地图的控件，您可以前往高德地图新增店铺地址信息，审核通过后即可搜索。</p>
         <p style={{ color: '#555555' }}>2、找不到时您可以这么做</p>
         <p>当搜索不到您的店铺地址时，可在地图上进行手动拖动，可能会有100米左右的误差，所以请务必填写详细店铺地址。</p>
     </div>
-)
+);
 
 export default class AddressField extends React.PureComponent {
     state = {
@@ -176,15 +178,18 @@ export default class AddressField extends React.PureComponent {
                 />
                 <Field
                     name="amap"
-                    helpDesc={
+                    helpDesc={(
                         <Pop
                             trigger="hover"
                             position="bottom-center"
                             content={<TitPop />}
-                        >
-                            <span className="gray-text mr-10" style={{ fontSize: 12 }}>找不到地址？<Icon type="help-circle-o" className="deduct-help-icon" /></span>
-                        </Pop>
-                    }
+>
+                            <span className="gray-text mr-10" style={{ fontSize: 12 }}>
+找不到地址？
+<Icon type="help-circle-o" className="deduct-help-icon" />
+</span>
+</Pop>
+                    )}
                     label="地图定位："
                     data={{
                         city: shopAddress.city,
