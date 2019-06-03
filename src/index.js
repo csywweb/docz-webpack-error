@@ -5,7 +5,8 @@ import BeautyTable from './components/beauty_table';
 import ListByPage from './components/ListByPage';
 import SelectDept from './components/select_dept';
 import SimpleForm from './components/simple_form';
-// import PopSelector from './components/pop_selector';
+import PopSelector from './components/pop_selector';
+import VerticalTab from './components/vertical_tab'; // 垂直tab组件
 
 export {
     AddressField,
@@ -13,5 +14,6 @@ export {
     ListByPage,
     SelectDept,
     SimpleForm,
-    // PopSelector,
+    PopSelector,
+    VerticalTab,
 };

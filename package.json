@@ -1,7 +1,11 @@
 {
   "name": "@youzan/mei-components",
   "description": "美业前端业务组件库",
+<<<<<<< HEAD
   "version": "1.2.0-beta-1",
+=======
+  "version": "1.1.0-beta-1",
+>>>>>>> feature/vertical_tab
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "files": [
