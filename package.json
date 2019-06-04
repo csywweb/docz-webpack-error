@@ -1,11 +1,7 @@
 {
   "name": "@youzan/mei-components",
   "description": "美业前端业务组件库",
-<<<<<<< HEAD
   "version": "1.2.0-beta-1",
-=======
-  "version": "1.1.0-beta-1",
->>>>>>> feature/vertical_tab
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "files": [
@@ -18,7 +14,7 @@
     "build-storybook": "build-storybook",
     "build:site": "node ./node_modules/.bin/build-storybook -o ./dist",
     "clean": "rm -rf lib/ dist/",
-    "build": "npm run clean && npm run build:babel && npm run build:style",
+    "build": "npm run build:check && npm run clean && npm run build:babel && npm run build:style",
     "build:babel": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js",
     "build:babel:watch": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js --watch",
     "build:style": "node ./build/style.js",

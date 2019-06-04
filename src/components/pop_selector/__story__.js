@@ -11,6 +11,7 @@ import {
 import { withInfo } from '@storybook/addon-info';
 
 import PopSelector from './index';
+import './index.scss';
 
 // import Readme from './README.md';
 const Readme = require('./README.md');

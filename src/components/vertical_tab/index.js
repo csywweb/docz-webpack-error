@@ -32,15 +32,20 @@
  * 目前存在问题：
  * 1、目前tab不能disabled
  * 2、左侧Nav目前不能自定义宽度，默认宽度为200
- * 3、Pannel组合子组件模式中，目前并未排除非Pannel组件，传入非Pannel组件的情况下，可能会报错
+ * 3、未放入组件库中
+ *
+ * 组件库：
+ *  1、组价库中样式书写不方便，pop_selector组件未完成，但已推上master
+ *  2、组件库目前未合并到1.1.0-beata-1版本
+ *  2、组件库分支：feature/vertical_tab
+ *  3、组件库完善后再置入
  */
 
 import React, { Component } from 'react';
-import { style } from './index.scss';
 import Pannel from './pannel';
 import util from './util';
 
-class Tabs extends Component {
+class VerticalTab extends Component {
     static Pannel = Pannel;
 
     onChange = (id) => {
@@ -79,24 +84,18 @@ class Tabs extends Component {
 
     render() {
         const { activeId, children, tabs } = this.props;
+        const isCustomPannel = !tabs;
+        const tabList = isCustomPannel ? util.getTabList(children, activeId) : (tabs || []);
 
-        if (tabs) {
-            return (
-                <div className={style}>
-                    {this.renderNavs(tabs)}
-                    {children && <div className="item-content">{children}</div>}
-                </div>
-            );
-        }
-
-        const tabList = util.getTabList(children, activeId);
         return (
-            <div className={style}>
+            <div className="mei-components-vertical-tab">
                 {this.renderNavs(tabList)}
-                {this.renderPannels(tabList)}
+                { isCustomPannel
+                    ? this.renderPannels(tabList)
+                    : (children && <div className="item-content">{children}</div>)}
             </div>
         );
     }
 }
 
-export default Tabs;
+export default VerticalTab;

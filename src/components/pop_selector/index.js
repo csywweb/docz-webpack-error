@@ -4,7 +4,6 @@ import {
 } from 'zent';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import scss from './index.scss';
 
 
 // 弹层
@@ -133,7 +132,7 @@ export default class PopSelector extends React.Component {
         });
         return (
             <Popover
-                className={scss.selector}
+                className="mei-components-pop-selector"
                 position={position}
                 onShow={this.onShow}
                 display="inline"

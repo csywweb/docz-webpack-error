@@ -1,23 +1,7 @@
-import React from 'react';
+# VerticalTab
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
-
-import { withReadme, withDocs } from 'storybook-readme';
-import {
-    withKnobs, text, number, array, boolean,
-} from '@storybook/addon-knobs';
-import { withInfo } from '@storybook/addon-info';
-
-import VerticalTab from './index';
-import './index.scss';
-
-const Pannel = VerticalTab.Pannel;
-
-// import Readme from './README.md';
-const Readme = require('./README.md');
-
+### 自定义多个Pannel
+```
 class CustomPannelDemo extends React.Component {
     constructor(props) {
         super(props);
@@ -51,7 +35,9 @@ class CustomPannelDemo extends React.Component {
         );
     }
 }
-
+```
+### 共用一个Pannel
+```
 class MainPannelDemo extends React.Component {
     constructor(props) {
         super(props);
@@ -78,7 +64,10 @@ class MainPannelDemo extends React.Component {
         );
     }
 }
+```
 
+### 只展示Nav
+```
 class NoPannelDemo extends React.Component {
     constructor(props) {
         super(props);
@@ -108,17 +97,19 @@ class NoPannelDemo extends React.Component {
         );
     }
 }
+```
 
-storiesOf('VerticalTab 垂直Tab', module)
-    .addDecorator(withKnobs)
-    .addDecorator(withDocs(Readme))
-    .addDecorator(withReadme(Readme))
-    .add('自定义Pannel', () => (
-        <CustomPannelDemo />
-    ))
-    .add('共用一个Pannel', () => (
-        <MainPannelDemo />
-    ))
-    .add('无Pannel', () => (
-        <NoPannelDemo />
-    ));
+### VerticalTab API
+
+| 参数 | 类型 | 是否必填 | 默认值 | 说明
+|------|------|------|------|------|
+| title | String | 否 | undefined | 左侧Nav标题，不传则不展示 |
+| tabs | Array | 否 | null | tabs列表，{id: xxx, text: xxx},传入后使用自定义Pannel无效 |
+| activeId | Number/String | undefined | undefined | 选中tabId |
+| onChange | func | activeId切换回调 | null | 提供新切换的activeId参数 |
+
+### VerticalTab.Pannel API
+| 参数 | 类型 | 是否必填 | 默认值 | 说明
+|------|------|------|------|------|
+| id | Number/String | 是 | undefined | Pannel Id标识 |
+| text | String | 否 | undefined | Pannel 文本 |
