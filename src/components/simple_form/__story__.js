@@ -62,8 +62,9 @@ const fieldsConfig1 = [
         },
     }, {
         name: 'id',
+        label: '乖乖哦',
         fType: FieldTypes.INPUT,
-        type: 'hidden',
+        type: 'text',
         className: 'hide',
     },
 ];

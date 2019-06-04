@@ -5,7 +5,6 @@ import BeautyTable from './components/beauty_table';
 import ListByPage from './components/list_by_page';
 import SelectDept from './components/select_dept';
 import SimpleForm from './components/simple_form';
-import PopSelector from './components/pop_selector';
 import VerticalTab from './components/vertical_tab'; // 垂直tab组件
 
 export {
@@ -14,6 +13,5 @@ export {
     ListByPage,
     SelectDept,
     SimpleForm,
-    PopSelector,
     VerticalTab,
 };
