@@ -1,7 +1,7 @@
 {
   "name": "@youzan/mei-components",
   "description": "美业前端业务组件库",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "files": [
@@ -11,15 +11,15 @@
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook", 
     "build:site": "node ./node_modules/.bin/build-storybook -o ./dist",
+    "package": "node ./build/package.js",
     "clean": "rm -rf lib/ dist/",
     "build": "npm run build:check && npm run clean && npm run build:babel && npm run build:style",
     "build:babel": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js",
     "build:babel:watch": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js --watch",
     "build:style": "node ./build/style.js",
     "build:check": "node ./build/check.js",
-    "build:test": "npm run build:check && npm run build:style",
     "prepublish": "npm run build",
     "lintjs": "eslint src/"
   },
@@ -40,6 +40,8 @@
     "zent": "7.0.0-next.14"
   },
   "devDependencies": {
+    "copy-dir": "^0.4.0",
+    "replace-in-file": "^3.4.0",
     "fs-extra": "^5.0.0",
     "@storybook/addon-actions": "^3.3.13",
     "@storybook/addon-console": "^1.0.0",
