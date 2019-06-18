@@ -20,7 +20,6 @@
     "build:babel:watch": "babel src/ -d lib --ignore __mocks__,__story__.js,__test__.js,__demo__.js --watch",
     "build:style": "node ./build/style.js",
     "build:check": "node ./build/check.js",
-    "build:test": "npm run build:check && npm run build:style",
     "prepublish": "npm run build",
     "lintjs": "eslint src/"
   },
