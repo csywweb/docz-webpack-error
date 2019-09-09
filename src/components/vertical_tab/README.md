@@ -108,6 +108,7 @@ class NoPannelDemo extends React.Component {
 | activeId | Number/String | undefined | undefined | 选中tabId |
 | onChange | func | activeId切换回调 | null | 提供新切换的activeId参数 |
 | width | Number | 左侧slide宽度 | 200 | 默认宽度200px |
+| slideMarginRight | Number | 左侧 slideMarginRight 值 | 20 | 默认宽度20px |
 
 ### VerticalTab.Pannel API
 | 参数 | 类型 | 是否必填 | 默认值 | 说明
