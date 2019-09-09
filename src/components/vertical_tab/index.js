@@ -53,9 +53,9 @@ class VerticalTab extends Component {
     }
 
     renderNavs(tabs) {
-        const { title, activeId } = this.props;
+        const { title, activeId, width = 200 } = this.props;
         return (
-            <div className="item-sider">
+            <div className="item-slider" style={{ width }}>
                 {title && <div className="tab-title">{ title }</div>}
                 <ul className="item-nav">
                     {
