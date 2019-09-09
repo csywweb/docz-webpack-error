@@ -45,7 +45,11 @@ class CustomPannelDemo extends React.Component {
     render() {
         const { tabs, activeId } = this.state;
         return (
-            <VerticalTab activeId={activeId} title="自定义Pannel" onChange={this.onTabChange}>
+            <VerticalTab
+                activeId={activeId}
+                title="自定义Pannel"
+                onChange={this.onTabChange}
+            >
                 {tabs.map(this.renderPannel)}
             </VerticalTab>
         );
@@ -72,7 +76,12 @@ class MainPannelDemo extends React.Component {
     render() {
         const { tabs, activeId } = this.state;
         return (
-            <VerticalTab tabs={tabs} activeId={activeId} title="自定义Pannel" onChange={this.onTabChange}>
+            <VerticalTab
+                tabs={tabs}
+                activeId={activeId}
+                title="自定义Pannel"
+                onChange={this.onTabChange}
+            >
                 <div>自己传入子元素</div>
             </VerticalTab>
         );
