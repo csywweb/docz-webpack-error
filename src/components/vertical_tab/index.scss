@@ -9,7 +9,7 @@
     display: flex;
     .item-slide {
         flex-grow: 0;
-        
+        flex: 0 0 auto;
         .tab-title {
             background-color: #F8F8F8;
             height: 50px;
