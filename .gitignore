@@ -57,3 +57,4 @@ pinjian/vendor/
 .uglify
 lib/
 yarn-error.log
+.docz/
