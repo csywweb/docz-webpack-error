@@ -1,8 +1,10 @@
+import React from 'react';
 import {
     Table,
 } from 'zent';
 import isEqual from 'lodash/isEqual';
 import assign from 'object-assign';
+import PropTypes from 'prop-types';
 
 /**
  * filter   筛选参数

@@ -1,0 +1,81 @@
+---
+name: listByPage
+route: /list-by-page
+menu: 通用组件
+---
+
+import ListByPage from './index';
+import { Playground, Props } from 'docz';
+
+## 简介
+
+表格通用组件, 推荐使用 beauty-table
+
+> Owner 周振
+
+## 使用方法
+
+<Playground>
+    <ListByPage
+        action={() => new Promise((resolve) => {
+            resolve();
+            this.setState({
+                list: datasets,
+                total: datasets.length,
+            });
+        })}
+        filter={{deptId: 1}}
+        total={10}
+        list={[{
+            item_id: '5024217',
+            bro_uvpv: '0/0',
+            stock_num: '60',
+            sold_num: 0,
+        }, {
+            item_id: '5024277',
+            bro_uvpv: '0/0',
+            stock_num: 59,
+            sold_num: 0,
+        }, {
+            item_id: '13213123',
+            bro_uvpv: '0/0',
+            stock_num: 159,
+            sold_num: 0,
+        }]}
+        columns={[{
+            title: 'Product',
+            bodyRender: data => (
+                <div>{data.item_id}</div>
+            ),
+        }, {
+            title: 'PV',
+            name: 'bro_uvpv',
+            width: '200px',
+        }, {
+            title: 'Stock',
+            name: 'stock_num',
+            width: '100px',
+            textAlign: 'center',
+            isMoney: true,
+        }, {
+            width: '3em',
+            title: 'Sales',
+            name: 'sold_num',
+        }]}
+        emptyLabel="暂无数据"
+    >
+    </ListByPage>
+</Playground>
+
+
+## 参数
+
+| 参数 | 类型 | 是否必填        |默认值   |说明
+|------|------------------|-----------------|---------|----------|
+|filter|object|否|{}|接口调用参数，比如deptId
+|action|Promise|是||翻页api接口，必须是Promise对象
+|columns|array|是|[]|表格列
+|total|string|是|0|总的数据条数
+|pageSize|number|否|20|分页条数
+|list|array|是|[]|表格数据
+|...|...|否|undefined|zent的Table组件其他配置都可以使用，参考[Table](https://youzan.github.io/zent/zh/component/table)
