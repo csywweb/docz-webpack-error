@@ -1,6 +1,6 @@
 import { createPlugin } from 'docz-core';
 
-const myPlugin = () => createPlugin({
+const zent = () => createPlugin({
     onCreateBabelConfig({ actions }) {
         actions.setBabelPlugin({
             name: 'babel-plugin-zent',
@@ -18,5 +18,7 @@ export default {
     menu: ['开始', '通用组件'],
     ignore: ['README.md', 'CHANGELOG.md', 'README.md'],
 
-    plugins: [myPlugin()],
+    plugins: [
+        zent(),
+    ],
 };

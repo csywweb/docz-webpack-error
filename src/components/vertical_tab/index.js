@@ -78,7 +78,7 @@ class VerticalTab extends Component {
 
     renderPannels(tabs) {
         const list = [];
-        tabs.map((tab) => {
+        tabs.forEach((tab) => {
             list.push(<Pannel key={tab.id} {...tab} />);
         });
         return list;

@@ -31,7 +31,7 @@ const {
     Field, createForm, InputField, SelectField, RadioGroupField,
 } = Form;
 
-const FieldTypes = {
+export const FieldTypes = {
     INPUT: 1,
     SELECT: 2,
     RADIO: 3,
@@ -54,7 +54,7 @@ class SimpleForm extends PureComponent {
         const { fieldsConfig } = props;
         const fieldTypes = values(FieldTypes);
 
-        if (!fieldsConfig || fieldsConfig.length == 0) {
+        if (!fieldsConfig || fieldsConfig.length === 0) {
             throw new Error('fields config cannot be empty');
         }
 
@@ -101,7 +101,7 @@ class SimpleForm extends PureComponent {
                                     Cpn = fieldConfig.component;
                                     break;
                                 default:
-                                    undefined;
+                                    Cpn = undefined;
                             }
 
                             const props = {
@@ -165,7 +165,7 @@ const HOCForm = createForm()(SimpleForm);
 
 HOCForm.FieldTypes = FieldTypes;
 
-const isFormValid = (zentForm) => {
+export const isFormValid = (zentForm) => {
     zentForm.validateForm();
     const errors = zentForm.getValidationErrors();
     zentForm.setFieldValidationErrors(errors);
@@ -176,7 +176,7 @@ const isFormValid = (zentForm) => {
     };
 };
 
-const getFormValues = zentForm => zentForm.getFormValues();
+export const getFormValues = zentForm => zentForm.getFormValues();
 
 HOCForm.isFormValid = isFormValid;
 HOCForm.getFormValues = getFormValues;

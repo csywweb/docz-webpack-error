@@ -1,6 +1,7 @@
 /**
  * Created by zhouzhen on 2017/9/26.
  */
+import React from 'react';
 import RegionSelect from '@youzan/region-select';
 import ReactMap from '@youzan/react-amap';
 import '@youzan/region-select/lib/index.css';
@@ -183,12 +184,12 @@ export default class AddressField extends React.PureComponent {
                             trigger="hover"
                             position="bottom-center"
                             content={<TitPop />}
->
+                        >
                             <span className="gray-text mr-10" style={{ fontSize: 12 }}>
 找不到地址？
-<Icon type="help-circle-o" className="deduct-help-icon" />
-</span>
-</Pop>
+                                <Icon type="help-circle-o" className="deduct-help-icon" />
+                            </span>
+                        </Pop>
                     )}
                     label="地图定位："
                     data={{

@@ -1,0 +1,90 @@
+---
+name: VerticalTab
+route: /vertical_tab
+menu: 通用组件
+---
+
+import VerticalTab from './index';
+import { Playground, Props } from 'docz';
+import './index.scss';
+
+## 简介
+垂直tab组件
+> Owner 鹏程
+
+## 引入
+```js
+import { VerticalTab } from '@youzan/beauty-react-components';
+
+```
+## 使用方法
+
+### 自定义多个Pannel
+<Playground>
+    <VerticalTab activeId={1} title="自定义多个Pannel" onChange={(activeId) => { console.log(activeId)}}>
+        {
+            [
+                { id: 1, text: '一' },
+                { id: 2, text: '二' },
+                { id: 3, text: '三' },
+            ].map(d => {
+                return <VerticalTab.Pannel key={d.id} id={d.id} text={d.text}>
+                    text:{d.text}
+                </VerticalTab.Pannel>
+            })
+        }
+    </VerticalTab>
+</Playground>
+
+### 共用一个Pannel
+<Playground>
+    <VerticalTab 
+        tabs={[
+            { id: 1, text: '一' },
+            { id: 2, text: '二' },
+            { id: 3, text: '三' },
+        ]} 
+        activeId={1}
+        title="共用一个Pannel"
+        onChange={(activeId) => { console.log(activeId)}}
+    >
+        <div>自己传入子元素</div>
+    </VerticalTab>
+</Playground>
+
+
+### 只展示Nav
+<Playground>
+    <VerticalTab
+        tabs={[
+            { id: 1, text: '一' },
+            { id: 2, text: '二' },
+            { id: 3, text: '三' },
+        ]} 
+        activeId={1}
+        title="只展示Nav"
+        onChange={(activeId) => { console.log(activeId)}}
+    >
+    </VerticalTab>
+</Playground>
+
+
+## 参数
+
+### VerticalTab API
+
+| 参数 | 类型 | 是否必填 | 默认值 | 说明
+|------|------|------|------|------|
+| title | String | 否 | undefined | 左侧Nav标题，不传则不展示 |
+| tabs | Array | 否 | null | tabs列表，{id: xxx, text: xxx},传入后使用自定义Pannel无效 |
+| activeId | Number/String | undefined | undefined | 选中tabId |
+| onChange | func | activeId切换回调 | null | 提供新切换的activeId参数 |
+| slideWidth | Number | 左侧slide宽度 | 200 | 默认宽度200px |
+| slideMarginRight | Number | 左侧slide marginRight | 20 | 默认宽度20px |
+
+### VerticalTab.Pannel API
+| 参数 | 类型 | 是否必填 | 默认值 | 说明
+|------|------|------|------|------|
+| id | Number/String | 是 | undefined | Pannel Id标识 |
+| text | String | 否 | undefined | Pannel 文本 |
+

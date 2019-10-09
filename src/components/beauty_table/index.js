@@ -42,6 +42,28 @@ import { pick } from 'lodash';
 import PropTypes from 'prop-types';
 
 export default class BeautyTable extends React.Component {
+    static defaultProps = {
+        params: {},
+        pageInfo: {},
+        formatData: null,
+        autoFetchData: true,
+        onChange: () => {},
+        onTotalChange: () => {},
+        onFetchDataError: () => {},
+    }
+
+    static propTypes = {
+        columns: PropTypes.array.isRequired,
+        params: PropTypes.object,
+        pageInfo: PropTypes.object,
+        fetchData: PropTypes.func.isRequired,
+        onFetchDataError: PropTypes.func,
+        formatData: PropTypes.func,
+        onChange: PropTypes.func,
+        onTotalChange: PropTypes.func,
+        autoFetchData: PropTypes.bool,
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -56,14 +78,19 @@ export default class BeautyTable extends React.Component {
     }
 
     componentDidMount() {
-        this.refreshTable();
+        if (this.props.autoFetchData) {
+            this.refreshTable();
+        }
     }
 
-    onTableChange = ({ current }) => {
-        const { pageInfo } = this.state;
-        this.setState({
-            pageInfo: { ...pageInfo, pageNo: current },
-        }, this.refreshTable);
+    onTableChange = ({ current, sortType, sortBy }) => {
+        if (current) {
+            this.setState({
+                pageInfo: { ...this.state.pageInfo, pageNo: current },
+            }, this.refreshTable);
+        } else {
+            this.props.onChange({ sortType, sortBy });
+        }
     }
 
     /**
@@ -71,16 +98,14 @@ export default class BeautyTable extends React.Component {
      */
     refreshTable = () => {
         const { pageInfo } = this.state;
-        const {
-            params, formatData, onChange, fetchData, onFetchDataError,
-        } = this.props;
+        const { params, formatData, onTotalChange } = this.props;
         // 合并查询参数
         const query = { ...pageInfo, ...params };
 
         this.setState({ loading: true });
         // 这里把page参数也传入，兼容新版后端api，因为新版后端api的参数是page，不再是pageNo了，
         // 这里把page和pageNo都传给后台，他想用哪个就用哪个
-        fetchData({ ...query, page: query.pageNo }).then((data) => {
+        this.props.fetchData({ ...query, page: query.pageNo }).then((data) => {
             // 这里使用items，也是为了兼容新版后端api，新版api的列表数据返回的是items，不是list了
             // 另外，totalCount数据保存在了paginator字段里面了，这里这样写，是为了兼容2种方案
             // 传pageInfo可以在formatData中进行手动分页
@@ -96,10 +121,10 @@ export default class BeautyTable extends React.Component {
                 loading: false,
             });
 
-            onChange(total);
+            onTotalChange(total);
         }).catch((err) => {
             this.setState({ loading: false });
-            onFetchDataError(err);
+            this.props.onFetchDataError(err);
         });
     }
 
@@ -107,8 +132,7 @@ export default class BeautyTable extends React.Component {
      * 重载表格: 会将pageNo重置为1，然后刷新
      */
     resetTable = () => {
-        const { pageInfo } = this.state;
-        this.setState({ pageInfo: { ...pageInfo, pageNo: 1 } }, this.refreshTable);
+        this.setState({ pageInfo: { ...this.state.pageInfo, pageNo: 1 } }, this.refreshTable);
     }
 
     render() {
@@ -116,9 +140,9 @@ export default class BeautyTable extends React.Component {
         const { columns } = this.props;
         // 表格原来的配置
         const originProps = pick(this.props, [
-            'rowKey', 'sortBy', 'sortType', 'emptyLable', 'selection', 'getRowConf',
+            'rowKey', 'sortBy', 'sortType', 'emptyLable', 'emptyLabel', 'selection', 'getRowConf',
             'expandation', 'batchComponents', 'batchComponentsAutoFixed', 'autoStick', 'autoScroll', 'className',
-            'prefix',
+            'prefix', 'scroll',
         ]);
         // 格式化成Table自己的配置格式
         const formattedPageInfo = {
@@ -139,21 +163,3 @@ export default class BeautyTable extends React.Component {
         );
     }
 }
-
-BeautyTable.defaultProps = {
-    params: {},
-    pageInfo: {},
-    formatData: null,
-    onChange: () => {},
-    onFetchDataError: () => {},
-};
-
-BeautyTable.propTypes = {
-    columns: PropTypes.array.isRequired,
-    params: PropTypes.object,
-    pageInfo: PropTypes.object,
-    fetchData: PropTypes.func.isRequired,
-    onFetchDataError: PropTypes.func,
-    formatData: PropTypes.func,
-    onChange: PropTypes.func,
-};

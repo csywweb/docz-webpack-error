@@ -1,0 +1,67 @@
+---
+name: addressField
+route: /address-field
+menu: 通用组件
+---
+
+import AddressField from './demo';
+import { Form } from 'zent';
+import { Playground, Props } from 'docz';
+
+## 简介 
+
+地理位置选择
+
+> owner 鹏程
+
+## 引入
+```js
+import { AddressField } from '@youzan/beauty-react-components';
+```
+
+## 使用
+```js
+class GeoPanel extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            shopAddress: {},
+            isMounted: false,
+        };
+    }
+
+    componentDidMount() {
+        // AddressField使用了amap组件，该组件会在construct时进行初始化，如果此时组件未挂载，则无法渲染，所以加此判断
+        this.setState({ isMounted: true });
+    }
+
+
+    render() {
+        const {
+            shopAddress,
+            isMounted,
+        } = this.state;
+        return (
+            <Form
+                className="form"
+                horizontal
+            >
+                {isMounted && <AddressField {...shopAddress} linkage />}
+            </Form>
+        );
+    }
+}
+```
+
+<AddressField />
+
+## 参数
+
+| 参数 | 类型 | 是否必填 | 默认值 | 说明
+|------|------|------|------|------|
+| areaCode | string | 否 | undefined | 门店地址code |
+| detailedAddress 或 addressDetail | string | 否 | undefined | 具体地址 |
+| city | string | 否 | undefined | 城市 |
+| latitude 或 lat | string | 否 | undefined | 维度 |
+| longitude 或 lng | string | 否 | undefined | 精度 |
+| linkage | boolean | 否 | false | 控制地图、地址输入框是否联动 |
