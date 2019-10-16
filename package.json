@@ -25,8 +25,6 @@
     "lintjs": "eslint src/"
   },
   "dependencies": {
-    "@youzan/react-amap": "^5.0.0",
-    "@youzan/region-select": "4.3.8",
     "autoprefixer": "^9.4.3",
     "big.js": "^5.2.2",
     "classnames": "^2.2.6",
